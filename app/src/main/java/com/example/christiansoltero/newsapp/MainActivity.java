@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
-            case R.id.action_refresh:
-                Toast.makeText(getApplicationContext(),"REFRESH is selected",Toast.LENGTH_SHORT).show();
+            case R.id.get_news:
+                Toast.makeText(getApplicationContext(),"Refresh is selected",Toast.LENGTH_SHORT).show();
                 NewsQueryTask n = new NewsQueryTask();
                 n.execute();
         }
