@@ -70,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
             JSONObject jobj = new JSONObject();
             try {
                 jobj = new JSONObject(json);
-                Log.e(TAG,jobj.getString("articles"));
+                //Log.e(TAG,jobj.getString("articles"));
+                NewsItem item = new NewsItem(jobj);
+                Log.e(TAG,item.getStatus() + " it works");
                 //Log.e(TAG,jobj.get);
             } catch (JSONException e) {
                 e.printStackTrace();
