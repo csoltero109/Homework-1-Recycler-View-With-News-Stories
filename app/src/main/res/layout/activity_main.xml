@@ -25,16 +25,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.64" />
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
 
 </android.support.constraint.ConstraintLayout>

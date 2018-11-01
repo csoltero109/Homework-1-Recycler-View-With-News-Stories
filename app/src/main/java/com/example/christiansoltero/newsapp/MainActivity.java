@@ -4,12 +4,16 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,10 +27,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        android.support.v7.app.ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowHomeEnabled(true);
+
         textView1 = (TextView)findViewById(R.id.textView1);
         textView1.setText(results);
-        NewsQueryTask n = new NewsQueryTask();
-        n.execute();
+        //NewsQueryTask n = new NewsQueryTask();
+        //n.execute();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater mMenuInflater = getMenuInflater();
+        mMenuInflater.inflate(R.menu.main_activity_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case R.id.action_refresh:
+                Toast.makeText(getApplicationContext(),"REFRESH is selected",Toast.LENGTH_SHORT).show();
+                NewsQueryTask n = new NewsQueryTask();
+                n.execute();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     class NewsQueryTask extends AsyncTask<Void, Void, Void> {
