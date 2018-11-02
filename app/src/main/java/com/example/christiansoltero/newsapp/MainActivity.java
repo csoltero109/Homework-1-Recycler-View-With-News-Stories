@@ -15,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private static int counter = 0;
@@ -60,27 +61,21 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             NetworkUtils n = new NetworkUtils();
+            JSONObject jobj = new JSONObject();
             URL url = n.buildUrl();
             try{
                 json = n.getResponseFromHttpUrl(url);
             } catch(java.io.IOException e){
                 e.printStackTrace();
             }
-
-            JSONObject jobj = new JSONObject();
-            try {
-                jobj = new JSONObject(json);
-                //Log.e(TAG,jobj.getString("articles"));
-                NewsItem item = new NewsItem(jobj);
-                Log.e(TAG,item.getStatus() + " it works");
-                //Log.e(TAG,jobj.get);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-
-
+//            try {
+//                jobj = new JSONObject(json);
+//                JsonUtils j = new JsonUtils();
+//                ArrayList<NewsItem> test = j.parseNews(jobj);
+//                Log.e("Heres the array",test.get(2).getUrlFromJSON());
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
             results += json;
             return null;
         }
